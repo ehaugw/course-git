@@ -1,0 +1,116 @@
+
+
+WHAT IS GIT?
+Tracking code changes
+Tracking who made changes
+Sharing code
+
+WHAT DOES GIT DO?
+Manage projects with REPOSITORIES
+*show flow chart*
+CLONE a project to work on a local copy
+Control ant track changes with STAGING and COMMITING
+BRANCH and MARGE to allow for work on different parts and versions of a project
+PULL the latest version of the project from REMOTE to LOCAL
+PUSH local changes to REMOTE
+
+WHY USE GIT?
+70% of developers use Git
+Developers can work together
+Developers can see the full history of the project
+Developers can revert to earlier or other versions of the project
+
+WHAT IS GITHUB?
+Git is not the same as GitHub
+GitHub makes tools that use Git
+GitHub is the largest host of source code in the world, ans has been owned by Microsoft since 2018
+We will focus on Git with GitHub
+
+CONFIGURE GIT
+$ git config --global user.name "Eivind Haug-Warberg"
+$ git config --global user.email "eivind.haug-warberg@cgi.com"
+$ git init
+
+CHANGING FILES
+*make change* Is it in Git yet?
+$ git status
+
+GIT STAGING ENVIRONMENT (index)
+$ git add <file>
+	will be staged
+    $ git add *
+        all files from shell list (all files that does not start with .)
+	$ git add .
+		all new files and modifications (found files)
+	$ git add -u
+		all deleted files and modifications
+	$ git add -all (or $ git add -A)
+		all new, deleted and modified files
+		$ git add . && git add -u
+$ git status
+
+GIT COMMIT
+$ git commit
+	commits staged files
+	index to HEAD
+$ git commit -a
+	commit already tracked files that have changed
+	working directory to HEAD
+$ git commit -m
+	provide commit message to omit interactive mode
+note that $ git commit -a -m> is not recommended together because you have no way to see what changes you commit
+$ git log
+	see list of commits
+    --oneline
+    short hash is short for .git/objects/c2/<shorthash>*
+
+GIT HELP
+$ git <command> -help
+$ git help --all
+
+GIT BRANCH
+A new branch / path to track changes
+Separate your changes
+$ git branch <name>
+* are we on the new branch yet? *
+$ git branch -l ($ git branch)
+$ git branch -m <name>
+	create branch and move
+$ git checkout <name>
+$ git checkout <name> -b
+$ git branch -d <name>
+
+GIT MERGE
+* do changes and commit *
+$ git checkout master && git merge
+* delete old branch *
+
+GIT REVERT
+* how to undo a change? *
+* is it safe to revert a public branch? *
+    nope
+$ git log --oneline
+* remember short vs long hash
+$ git revert <hash>
+
+GIT AMMEND
+modify the last commit instead of making a new one
+pro tip: rename latest commit if stage is empty
+* is it safe to ammend a public branch? *
+    nope
+$ git commit --amend
+
+GIT RESET
+reset branch to earlier stage
+* is it safe to reset a public branch? *
+    nope
+$ git log --oneline
+* remember short vs long hash
+$ git reset <hash>
+
+GIT REBASE
+move your changes onto the latest point where with shared history
+* is it safe to reset a public branch? *
+$ git rebase <branch>
+$ git rebase <hash>
+$ git rebase HEAD~3 (rebase onto 3 commits ago)
