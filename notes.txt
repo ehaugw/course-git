@@ -74,8 +74,6 @@ Separate your changes
 $ git branch <name>
 * are we on the new branch yet? *
 $ git branch -l ($ git branch)
-$ git branch -m <name>
-	create branch and move
 $ git checkout <name>
 $ git checkout <name> -b
 $ git branch -d <name>
